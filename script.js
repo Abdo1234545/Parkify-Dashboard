@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ================== 1. Login Logic ==================
     const togglePassword = document.querySelector('#togglePassword');
     const passwordInput = document.querySelector('#password');
     const loginForm = document.getElementById('loginForm');
@@ -16,20 +17,33 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('email');
+            
+            // نحفظ الاسم زي ما المستخدم كتبه بالظبط
             if (usernameInput && usernameInput.value) {
                 sessionStorage.setItem('current_username', usernameInput.value);
+            }
+            // نحفظ الإيميل زي ما المستخدم كتبه بالظبط
+            if (emailInput && emailInput.value) {
+                sessionStorage.setItem('current_email', emailInput.value);
             }
             window.location.href = 'dashboard.html';
         });
     }
 
+    // ================== 2. Dashboard UI Logic (Profile & Emails) ==================
     const displayUserNameTop = document.getElementById('displayUserNameTop');
     const displayUserNameDropdown = document.getElementById('displayUserNameDropdown');
+    const displayUserEmailDropdown = document.getElementById('displayUserEmailDropdown');
 
-    if (displayUserNameTop && displayUserNameDropdown) {
-        const storedName = sessionStorage.getItem('current_username') || 'Guest User';
-        displayUserNameTop.textContent = storedName;
-        displayUserNameDropdown.textContent = storedName;
+    // هنا بنقرأ الداتا وبنحطها في مكانها بدون أي تعديل أو فزلكة
+    if (displayUserNameTop || displayUserNameDropdown || displayUserEmailDropdown) {
+        const storedName = sessionStorage.getItem('current_username') || 'Admin';
+        const storedEmail = sessionStorage.getItem('current_email') || 'admin@grandmall.com';
+        
+        if(displayUserNameTop) displayUserNameTop.textContent = storedName;
+        if(displayUserNameDropdown) displayUserNameDropdown.textContent = storedName;
+        if(displayUserEmailDropdown) displayUserEmailDropdown.textContent = storedEmail;
     }
 
     const signOutBtn = document.getElementById('signOutBtn');
@@ -37,10 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         signOutBtn.addEventListener('click', (e) => {
             e.preventDefault();
             sessionStorage.removeItem('current_username');
+            sessionStorage.removeItem('current_email');
             window.location.href = 'login.html';
         });
     }
 
+    // ================== 3. Dashboard Clocks & Alerts ==================
     const liveTimeDisplays = document.querySelectorAll('.liveTime');
     if (liveTimeDisplays.length > 0) {
         function updateClock() {
@@ -82,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ================== 4. Mobile Menu & Navigation ==================
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -138,5 +155,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateCameraClocks();
         setInterval(updateCameraClocks, 1000);
+    }
+
+    // ================== 5. Parking Spots Modal Logic ==================
+    const spotBoxes = document.querySelectorAll('.spot-box');
+    const modalOverlay = document.getElementById('spotDetailsModal');
+    const closeModalBtns = [document.getElementById('closeModalBtn'), document.getElementById('closeModalFooterBtn')];
+    
+    const modalSpotId = document.getElementById('modalSpotId');
+    const infoSpotId = document.getElementById('infoSpotId');
+    const modalSpotStatus = document.getElementById('modalSpotStatus');
+    const modalIconBg = document.querySelector('.modal-icon');
+
+    if (spotBoxes.length > 0 && modalOverlay) {
+        spotBoxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const spotId = this.getAttribute('data-id');
+                const spotStatus = this.getAttribute('data-status').toLowerCase();
+                
+                if(modalSpotId) modalSpotId.textContent = spotId;
+                if(infoSpotId) infoSpotId.textContent = spotId;
+                if(modalSpotStatus) {
+                    modalSpotStatus.textContent = spotStatus;
+                    modalSpotStatus.className = 'badge-status ' + spotStatus;
+                }
+                
+                if(modalIconBg) {
+                    if(spotStatus === 'available') {
+                        modalIconBg.style.background = '#ecfdf5';
+                        modalIconBg.style.color = '#059669';
+                    } else if(spotStatus === 'occupied') {
+                        modalIconBg.style.background = '#fee2e2';
+                        modalIconBg.style.color = '#dc2626';
+                    } else if(spotStatus === 'reserved') {
+                        modalIconBg.style.background = '#fffbeb';
+                        modalIconBg.style.color = '#d97706';
+                    } else {
+                        modalIconBg.style.background = '#f3f4f6';
+                        modalIconBg.style.color = '#4b5563';
+                    }
+                }
+
+                modalOverlay.classList.add('show');
+            });
+        });
+
+        const closeModal = () => modalOverlay.classList.remove('show');
+        closeModalBtns.forEach(btn => {
+            if(btn) btn.addEventListener('click', closeModal);
+        });
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
     }
 });

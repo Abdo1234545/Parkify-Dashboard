@@ -33,35 +33,35 @@
                     <i class="fa-solid fa-video"></i>
                     <span>Live Monitoring</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="parkingSpotsView">
                     <i class="fa-solid fa-square-parking"></i>
                     <span>Parking Spots</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="floorOverviewView">
                     <i class="fa-solid fa-layer-group"></i>
                     <span>Floor Overview</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="analyticsView">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Analytics</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="visitorsView">
                     <i class="fa-solid fa-users"></i>
                     <span>Visitors</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="paymentsView">
                     <i class="fa-regular fa-credit-card"></i>
                     <span>Payments</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="reportsView">
                     <i class="fa-regular fa-file-lines"></i>
                     <span>Reports</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="notificationsView">
                     <i class="fa-regular fa-bell"></i>
                     <span>Notifications</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-target="settingsView">
                     <i class="fa-solid fa-gear"></i>
                     <span>Settings</span>
                 </a>
@@ -69,7 +69,7 @@
             <div class="sidebar-footer">
                 <div class="capacity-widget">
                     <h4>Grand Mall Parking</h4>
-                    <p>5 Floors • 2,000 Spots</p>
+                    <p>1 Floor • 8 Spots</p>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 0%;"></div>
                     </div>
@@ -105,7 +105,7 @@
                         <div class="profile-dropdown" id="profileDropdown">
                             <div class="dropdown-header">
                                 <strong id="displayUserNameDropdown">User</strong>
-                                <span>admin@grandmall.com</span>
+                                <span id="displayUserEmailDropdown">admin@grandmall.com</span>
                                 <span>Role: Admin</span>
                             </div>
                             <div class="dropdown-links">
@@ -159,7 +159,7 @@
                                 <span class="trend">0%</span>
                             </div>
                             <p class="stat-label">Available Spots</p>
-                            <h2 class="stat-value">0 <span class="stat-sub">/ 2000</span></h2>
+                            <h2 class="stat-value">0 <span class="stat-sub">/ 8</span></h2>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
@@ -167,7 +167,7 @@
                                 <span class="trend">0%</span>
                             </div>
                             <p class="stat-label">Total Revenue</p>
-                            <h2 class="stat-value">$0 <span class="stat-sub">Today</span></h2>
+                            <h2 class="stat-value">0 EGP <span class="stat-sub">Today</span></h2>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
@@ -366,9 +366,677 @@
                     </div>
                 </div>
 
+                <div id="parkingSpotsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Parking Spots</h1>
+                            <p>Prototype - Ground Floor (8 Spots Allocated)</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="action-btn-outline"><i class="fa-solid fa-download"></i> Export</button>
+                            <button class="action-btn-primary"><i class="fa-solid fa-plus"></i> Add Spot</button>
+                        </div>
+                    </div>
+                    <div class="spots-stats-grid">
+                        <div class="spot-stat-card">
+                            <span class="stat-title">Total Spots</span>
+                            <h2 class="stat-num">8</h2>
+                        </div>
+                        <div class="spot-stat-card text-green">
+                            <span class="stat-title">Available</span>
+                            <h2 class="stat-num">8</h2>
+                        </div>
+                        <div class="spot-stat-card text-red">
+                            <span class="stat-title">Occupied</span>
+                            <h2 class="stat-num">0</h2>
+                        </div>
+                        <div class="spot-stat-card text-yellow">
+                            <span class="stat-title">Reserved</span>
+                            <h2 class="stat-num">0</h2>
+                        </div>
+                        <div class="spot-stat-card text-gray">
+                            <span class="stat-title">Maintenance</span>
+                            <h2 class="stat-num">0</h2>
+                        </div>
+                    </div>
+                    <div class="spots-filters-bar">
+                        <div class="filter-group">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Available</button>
+                            <button class="filter-btn">Occupied</button>
+                            <button class="filter-btn">Reserved</button>
+                            <button class="filter-btn">Maintenance</button>
+                        </div>
+                        <div class="view-toggles">
+                            <button class="icon-btn active"><i class="fa-solid fa-border-all"></i></button>
+                            <button class="icon-btn"><i class="fa-solid fa-list"></i></button>
+                        </div>
+                    </div>
+                    <div class="parking-grid">
+                        <div class="spot-box free" data-id="A-01" data-status="Available">
+                            <div class="spot-id">A-01</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-02" data-status="Available">
+                            <div class="spot-id">A-02</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-03" data-status="Available">
+                            <div class="spot-id">A-03</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-04" data-status="Available">
+                            <div class="spot-id">A-04</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-05" data-status="Available">
+                            <div class="spot-id">A-05</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-06" data-status="Available">
+                            <div class="spot-id">A-06</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-07" data-status="Available">
+                            <div class="spot-id">A-07</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                        <div class="spot-box free" data-id="A-08" data-status="Available">
+                            <div class="spot-id">A-08</div>
+                            <div class="spot-icon"><i class="fa-solid fa-car-side opacity-20"></i></div>
+                            <div class="spot-footer">Free</div>
+                            <div class="hover-overlay"><span>Click for details</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="floorOverviewView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Floor Overview</h1>
+                            <p>Manage all parking levels in Grand Mall</p>
+                        </div>
+                    </div>
+                    <div class="floor-stats-top">
+                        <div class="f-stat-card">
+                            <div class="f-stat-icon blue"><i class="fa-solid fa-building"></i></div>
+                            <div class="f-stat-info">
+                                <span class="f-stat-label">Total Floors</span>
+                                <h2 class="f-stat-value">1</h2>
+                            </div>
+                        </div>
+                        <div class="f-stat-card">
+                            <div class="f-stat-icon green"><i class="fa-solid fa-car-side"></i></div>
+                            <div class="f-stat-info">
+                                <span class="f-stat-label">Total Capacity</span>
+                                <h2 class="f-stat-value">8</h2>
+                            </div>
+                        </div>
+                        <div class="f-stat-card">
+                            <div class="f-stat-icon purple"><i class="fa-solid fa-square-parking"></i></div>
+                            <div class="f-stat-info">
+                                <span class="f-stat-label">Available Now</span>
+                                <h2 class="f-stat-value">8</h2>
+                            </div>
+                        </div>
+                        <div class="f-stat-card">
+                            <div class="f-stat-icon orange"><i class="fa-solid fa-chart-pie"></i></div>
+                            <div class="f-stat-info">
+                                <span class="f-stat-label">Overall Occupancy</span>
+                                <h2 class="f-stat-value">0%</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-cards-grid">
+                        <div class="floor-card">
+                            <div class="floor-card-header">
+                                <div class="floor-card-icon"><i class="fa-solid fa-building"></i></div>
+                                <h3>Ground Floor</h3>
+                                <p>Level G</p>
+                            </div>
+                            <div class="floor-card-body">
+                                <div class="floor-metrics">
+                                    <div class="metric">
+                                        <span class="m-label">Total</span>
+                                        <span class="m-value">8</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="m-label">Available</span>
+                                        <span class="m-value text-green">8</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="m-label">Occupied</span>
+                                        <span class="m-value text-red">0</span>
+                                    </div>
+                                </div>
+                                <div class="floor-progress-sec">
+                                    <div class="fp-labels">
+                                        <span>Occupancy Rate</span>
+                                        <span class="fp-percentage">0%</span>
+                                    </div>
+                                    <div class="fp-bar">
+                                        <div class="fp-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="floor-tags-sec">
+                                    <h4>Zones</h4>
+                                    <div class="tags-container">
+                                        <span class="f-tag">Zone A</span>
+                                    </div>
+                                </div>
+                                <div class="floor-tags-sec">
+                                    <h4>Features</h4>
+                                    <div class="tags-container">
+                                        <span class="f-tag blue-tag">Main Entrance</span>
+                                        <span class="f-tag blue-tag">Mall Access</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="floor-card-footer">
+                                <a href="#" class="view-floor-btn" onclick="document.querySelector('[data-target=\'parkingSpotsView\']').click();">View Floor Details &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="analyticsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Analytics</h1>
+                            <p>Detailed insights and trends</p>
+                        </div>
+                        <button class="action-btn-outline"><i class="fa-regular fa-calendar"></i> Last 6 Months</button>
+                    </div>
+                    <div class="analytics-stats">
+                        <div class="a-stat-card">
+                            <div class="a-stat-header">
+                                <span class="a-stat-title">Total Revenue</span>
+                                <i class="fa-solid fa-arrow-trend-up text-green"></i>
+                            </div>
+                            <h2 class="a-stat-value">0 EGP</h2>
+                            <span class="a-stat-trend text-green">+0.0% from last period</span>
+                        </div>
+                        <div class="a-stat-card">
+                            <div class="a-stat-header">
+                                <span class="a-stat-title">Total Bookings</span>
+                                <i class="fa-solid fa-arrow-trend-up text-green"></i>
+                            </div>
+                            <h2 class="a-stat-value">0</h2>
+                            <span class="a-stat-trend text-green">+0.0% from last period</span>
+                        </div>
+                        <div class="a-stat-card">
+                            <div class="a-stat-header">
+                                <span class="a-stat-title">Avg. Duration</span>
+                                <i class="fa-solid fa-arrow-trend-down text-red"></i>
+                            </div>
+                            <h2 class="a-stat-value">0.0 hrs</h2>
+                            <span class="a-stat-trend text-red">-0.0% from last period</span>
+                        </div>
+                    </div>
+                    <div class="analytics-charts-middle">
+                        <div class="chart-card">
+                            <div class="chart-title">
+                                <h4>Revenue & Bookings Trend</h4>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueTrendChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-title">
+                                <h4>Location Distribution</h4>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="locationPieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-charts-bottom">
+                        <div class="chart-card">
+                            <div class="chart-title">
+                                <h4>Peak Usage Hours</h4>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="peakHoursChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="visitorsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Users</h1>
+                            <p>Manage registered users and their activities</p>
+                        </div>
+                        <button class="action-btn-primary"><i class="fa-solid fa-user-plus"></i> Add User</button>
+                    </div>
+                    <div class="visitors-search-bar">
+                        <input type="text" placeholder="Search users by name or email...">
+                    </div>
+                    <div class="visitors-grid" id="visitorsGridContainer">
+                        <div class="visitor-card">
+                            <div class="v-card-header">
+                                <div class="v-avatar" style="background-color: #cbd5e1;">--</div>
+                                <div class="v-info">
+                                    <h4>[User Name]</h4>
+                                    <span class="v-status inactive">[Status]</span>
+                                </div>
+                                <button class="v-menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div class="v-card-body">
+                                <p><i class="fa-regular fa-envelope"></i> [user@email.com]</p>
+                                <p><i class="fa-solid fa-phone"></i> [Phone Number]</p>
+                                <p><i class="fa-regular fa-calendar"></i> [Join Date]</p>
+                            </div>
+                            <div class="v-card-footer">
+                                <div class="v-stat">
+                                    <span>Total Bookings</span>
+                                    <strong>0</strong>
+                                </div>
+                                <div class="v-stat">
+                                    <span>Active Now</span>
+                                    <strong class="text-blue">0</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="paymentsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Payments</h1>
+                            <p>Track and manage all transactions</p>
+                        </div>
+                        <button class="action-btn-primary"><i class="fa-solid fa-download"></i> Export Report</button>
+                    </div>
+                    <div class="payments-stats">
+                        <div class="p-stat-card">
+                            <div class="p-stat-icon green-light"><i class="fa-solid fa-dollar-sign"></i></div>
+                            <div class="p-stat-info">
+                                <span class="p-stat-title">Total Revenue</span>
+                                <h2 class="p-stat-value">0.00 EGP</h2>
+                            </div>
+                        </div>
+                        <div class="p-stat-card">
+                            <div class="p-stat-icon yellow-light"><i class="fa-regular fa-clock"></i></div>
+                            <div class="p-stat-info">
+                                <span class="p-stat-title">Pending</span>
+                                <h2 class="p-stat-value">0.00 EGP</h2>
+                            </div>
+                        </div>
+                        <div class="p-stat-card">
+                            <div class="p-stat-icon blue-light"><i class="fa-regular fa-credit-card"></i></div>
+                            <div class="p-stat-info">
+                                <span class="p-stat-title">Transactions</span>
+                                <h2 class="p-stat-value">0</h2>
+                            </div>
+                        </div>
+                        <div class="p-stat-card">
+                            <div class="p-stat-icon purple-light"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            <div class="p-stat-info">
+                                <span class="p-stat-title">Success Rate</span>
+                                <h2 class="p-stat-value">0.0%</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-filters-bar">
+                            <i class="fa-solid fa-filter filter-icon"></i>
+                            <div class="filter-group">
+                                <button class="filter-btn active">All</button>
+                                <button class="filter-btn">Completed</button>
+                                <button class="filter-btn">Pending</button>
+                                <button class="filter-btn">Failed</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Payment ID</th>
+                                        <th>User</th>
+                                        <th>Location</th>
+                                        <th>Amount</th>
+                                        <th>Duration</th>
+                                        <th>Method</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentsTableBody">
+                                    <tr class="template-row">
+                                        <td class="td-id">[PAY-000]</td>
+                                        <td>
+                                            <div class="td-user">
+                                                <strong>[User Name]</strong>
+                                                <span>[user@email.com]</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="td-loc">
+                                                <strong>[Location Name]</strong>
+                                                <span>[Spot ID]</span>
+                                            </div>
+                                        </td>
+                                        <td class="td-amount"><strong>0.00 EGP</strong></td>
+                                        <td class="td-duration">[0h 0m]</td>
+                                        <td class="td-method">[Method]</td>
+                                        <td><span class="badge-status pending">[Status]</span></td>
+                                        <td class="td-date">[Jan 1, 2026, 00:00 AM]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reportsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Reports</h1>
+                            <p>Generate and download detailed reports</p>
+                        </div>
+                        <button class="action-btn-primary"><i class="fa-solid fa-file-invoice"></i> Generate New Report</button>
+                    </div>
+                    <div class="reports-stats">
+                        <div class="r-stat-card">
+                            <div class="r-stat-icon blue-light"><i class="fa-solid fa-file-alt"></i></div>
+                            <div class="r-stat-info">
+                                <span class="r-stat-title">Total Reports</span>
+                                <h2 class="r-stat-value">0</h2>
+                            </div>
+                        </div>
+                        <div class="r-stat-card">
+                            <div class="r-stat-icon green-light"><i class="fa-solid fa-download"></i></div>
+                            <div class="r-stat-info">
+                                <span class="r-stat-title">Downloads</span>
+                                <h2 class="r-stat-value">0</h2>
+                            </div>
+                        </div>
+                        <div class="r-stat-card">
+                            <div class="r-stat-icon purple-light"><i class="fa-regular fa-calendar"></i></div>
+                            <div class="r-stat-info">
+                                <span class="r-stat-title">Scheduled</span>
+                                <h2 class="r-stat-value">0</h2>
+                            </div>
+                        </div>
+                        <div class="r-stat-card">
+                            <div class="r-stat-icon orange-light"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            <div class="r-stat-info">
+                                <span class="r-stat-title">This Month</span>
+                                <h2 class="r-stat-value">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-title-wrapper">
+                        <h3>Recent Reports</h3>
+                    </div>
+                    <div class="recent-reports-grid" id="recentReportsContainer">
+                        <div class="report-card template-card">
+                            <div class="report-card-top">
+                                <div class="report-icon green-light"><i class="fa-solid fa-file-lines"></i></div>
+                                <div class="report-info">
+                                    <h4>[Report Title]</h4>
+                                    <p>[Report Description / Details]</p>
+                                    <span class="report-meta">[Date] • [Size MB]</span>
+                                </div>
+                            </div>
+                            <div class="report-card-actions">
+                                <button class="btn-primary-full"><i class="fa-solid fa-download"></i> Download</button>
+                                <button class="btn-outline-gray">View</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-title-wrapper flex-between">
+                        <h3>Scheduled Reports</h3>
+                        <a href="#" class="text-blue text-sm fw-600">Manage Schedule</a>
+                    </div>
+                    <div class="scheduled-list" id="scheduledReportsContainer">
+                        <div class="scheduled-item template-item">
+                            <div class="s-item-left">
+                                <div class="s-icon blue-light"><i class="fa-regular fa-calendar"></i></div>
+                                <div class="s-info">
+                                    <h4>[Schedule Name]</h4>
+                                    <p>[Frequency Details]</p>
+                                </div>
+                            </div>
+                            <div class="s-item-right">
+                                <span class="v-status inactive">[Status]</span>
+                                <button class="icon-btn-small"><i class="fa-regular fa-file-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-report-banner">
+                        <div class="banner-text">
+                            <h3>Need a Custom Report?</h3>
+                            <p>Generate reports with specific date ranges and metrics</p>
+                        </div>
+                        <button class="btn-white-purple">Create Custom Report</button>
+                    </div>
+                </div>
+
+                <div id="notificationsView" class="page-view">
+                    <div class="page-header flex-between">
+                        <div>
+                            <h1>Notifications</h1>
+                            <p>Stay updated with system alerts and activities</p>
+                        </div>
+                        <a href="#" class="text-blue text-sm fw-600">Mark all as read</a>
+                    </div>
+                    <div class="notifications-container" id="notificationsContainer">
+                        <div class="notification-item unread">
+                            <div class="n-icon red-light"><i class="fa-solid fa-circle-exclamation"></i></div>
+                            <div class="n-content">
+                                <div class="n-title-row">
+                                    <h4>[Notification Title] <span class="unread-dot"></span></h4>
+                                </div>
+                                <p>[Notification detailed message goes here...]</p>
+                                <span class="n-time">[Timestamp / e.g. 5 mins ago]</span>
+                            </div>
+                            <button class="n-delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="settingsView" class="page-view">
+                    <div class="page-header">
+                        <div>
+                            <h1>Settings</h1>
+                            <p>Manage your system configuration and preferences</p>
+                        </div>
+                    </div>
+                    <div class="settings-layout">
+                        <div class="settings-main">
+                            <div class="settings-card">
+                                <div class="s-card-header">
+                                    <div class="s-icon blue-light"><i class="fa-solid fa-server"></i></div>
+                                    <div>
+                                        <h4>General Settings</h4>
+                                        <p>Basic system configuration</p>
+                                    </div>
+                                </div>
+                                <div class="s-form">
+                                    <div class="form-group">
+                                        <label>System Name</label>
+                                        <input type="text" class="s-input" value="" placeholder="[Backend: Enter System Name]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Email</label>
+                                        <input type="email" class="s-input" value="" placeholder="[Backend: Enter Contact Email]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Support Phone</label>
+                                        <input type="text" class="s-input" value="" placeholder="[Backend: Enter Support Phone]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-card">
+                                <div class="s-card-header">
+                                    <div class="s-icon green-light"><i class="fa-solid fa-dollar-sign"></i></div>
+                                    <div>
+                                        <h4>Pricing Settings</h4>
+                                        <p>Configure default pricing</p>
+                                    </div>
+                                </div>
+                                <div class="s-form">
+                                    <div class="s-grid-2">
+                                        <div class="form-group">
+                                            <label>Default Hourly Rate (EGP)</label>
+                                            <input type="number" class="s-input" value="" placeholder="0.00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Daily Maximum (EGP)</label>
+                                            <input type="number" class="s-input" value="" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <div class="s-checkbox-group">
+                                        <label class="s-checkbox-label">
+                                            <input type="checkbox"> Enable dynamic pricing
+                                        </label>
+                                        <label class="s-checkbox-label">
+                                            <input type="checkbox"> Weekend rate adjustment
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-card">
+                                <div class="s-card-header">
+                                    <div class="s-icon purple-light"><i class="fa-regular fa-bell"></i></div>
+                                    <div>
+                                        <h4>Notification Preferences</h4>
+                                        <p>Manage alert settings</p>
+                                    </div>
+                                </div>
+                                <div class="s-list-toggles">
+                                    <label class="s-toggle-row">
+                                        <span>Low availability alerts</span>
+                                        <input type="checkbox" class="s-toggle-input">
+                                    </label>
+                                    <label class="s-toggle-row">
+                                        <span>New user registrations</span>
+                                        <input type="checkbox" class="s-toggle-input">
+                                    </label>
+                                    <label class="s-toggle-row">
+                                        <span>Payment notifications</span>
+                                        <input type="checkbox" class="s-toggle-input">
+                                    </label>
+                                    <label class="s-toggle-row">
+                                        <span>Maintenance reminders</span>
+                                        <input type="checkbox" class="s-toggle-input">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-sidebar">
+                            <div class="settings-card">
+                                <div class="s-card-header">
+                                    <div class="s-icon red-light"><i class="fa-solid fa-shield-halved"></i></div>
+                                    <h4>Security</h4>
+                                </div>
+                                <div class="s-links">
+                                    <a href="#" class="s-link-item">Change Password</a>
+                                    <a href="#" class="s-link-item">Two-Factor Auth</a>
+                                    <a href="#" class="s-link-item">API Keys</a>
+                                </div>
+                            </div>
+                            <div class="settings-card">
+                                <div class="s-card-header">
+                                    <div class="s-icon orange-light"><i class="fa-regular fa-envelope"></i></div>
+                                    <h4>Email Templates</h4>
+                                </div>
+                                <div class="s-links">
+                                    <a href="#" class="s-link-item">Welcome Email</a>
+                                    <a href="#" class="s-link-item">Booking Confirmation</a>
+                                    <a href="#" class="s-link-item">Payment Receipt</a>
+                                </div>
+                            </div>
+                            <button class="btn-primary-full btn-large"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+
+    <div class="modal-overlay" id="spotDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <div class="modal-icon"><i class="fa-solid fa-car-side"></i></div>
+                    <div>
+                        <h2 class="m-spot-id">Spot <span id="modalSpotId">A-08</span> <span class="badge-status" id="modalSpotStatus">available</span></h2>
+                        <p class="m-spot-loc">Ground Floor • Zone A</p>
+                    </div>
+                </div>
+                <button class="close-modal-btn" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-tabs">
+                <button class="tab-btn active">Details</button>
+                <button class="tab-btn">Booking History</button>
+            </div>
+            <div class="modal-body">
+                <h3>Spot Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="i-label">Spot ID</span>
+                        <strong class="i-value" id="infoSpotId">A-08</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="i-label">Type</span>
+                        <strong class="i-value">Standard</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="i-label">Location</span>
+                        <strong class="i-value"><i class="fa-solid fa-location-dot"></i> Ground Floor</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="i-label">Floor & Zone</span>
+                        <strong class="i-value">Floor G, Zone A</strong>
+                    </div>
+                    <div class="info-item">
+                        <span class="i-label">Hourly Rate</span>
+                        <strong class="i-value">5 EGP/hour</strong>
+                    </div>
+                </div>
+                <h3>Features</h3>
+                <div class="features-grid">
+                    <div class="feature-tag"><i class="fa-regular fa-circle-check"></i> 24/7 Access</div>
+                    <div class="feature-tag"><i class="fa-regular fa-circle-check"></i> Security Camera</div>
+                    <div class="feature-tag"><i class="fa-regular fa-circle-check"></i> Covered Parking</div>
+                    <div class="feature-tag"><i class="fa-regular fa-circle-check"></i> Well Lit</div>
+                </div>
+                <h3>Quick Actions</h3>
+                <div class="actions-grid-modal">
+                    <button class="btn-primary-full"><i class="fa-solid fa-lock"></i> Reserve Spot</button>
+                    <button class="btn-outline-gray"><i class="fa-solid fa-pen-to-square"></i> Edit Details</button>
+                    <button class="btn-outline-orange"><i class="fa-solid fa-triangle-exclamation"></i> Mark Maintenance</button>
+                    <button class="btn-outline-red"><i class="fa-solid fa-trash"></i> Delete Spot</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="last-updated">Last updated: <span class="liveTime">--:--:--</span></span>
+                <button class="btn-primary-small" id="closeModalFooterBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
